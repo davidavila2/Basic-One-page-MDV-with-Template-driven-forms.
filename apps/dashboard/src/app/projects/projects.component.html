@@ -1,3 +1,19 @@
-<p>
-  projects works!
-</p>
+<div class="container">
+  <!-- Projects List -->
+  <div class="col-50">
+    <workshop-projects-list 
+    [projects]="projects$ | async"
+    (selected)=selectProject($event)
+    (deleted)="deleteProject($event)"
+    >
+    </workshop-projects-list>
+  </div>
+  <!-- Project Details-->
+  <div class="col-50">
+    <workshop-projects-details 
+    [project]="selectedProject"
+    (saved)="saveProject($event)"
+    (cancelled)="cancel()">
+  </workshop-projects-details>
+  </div>
+</div>
